@@ -1,0 +1,24 @@
+name: AssetFlow
+
+on:
+  push:
+    branches: [ test1 ]
+
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v2
+    
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: 151.243.222.70
+        username:  assetflow@arcueia.my.id
+        password: TokisakiKurumi
+        exclude: 
+          */.git
+          */.git/**
+          */node_modules/*
