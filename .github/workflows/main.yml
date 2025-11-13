@@ -9,16 +9,16 @@ jobs:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: 🚚 Get latest code
-      uses: actions/checkout@v2
-    
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-      with:
-        server: 151.243.222.70
-        username:  assetflow@arcueia.my.id
-        password: TokisakiKurumi
-        exclude: 
-          */.git/*
-          */.git/**
-          */node_modules/*
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v4
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: 151.243.222.70
+          username: assetflow@arcueia.my.id
+          password: ${{ secrets.FTP_PASSWORD }}
+          # exclude accepts a multiline string. Using a block scalar avoids YAML alias parsing.
+          exclude: |
+            **/.git/**
+            **/node_modules/**
