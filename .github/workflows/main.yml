@@ -19,6 +19,6 @@ jobs:
         username:  assetflow@arcueia.my.id
         password: TokisakiKurumi
         exclude: 
-          */.git
+          */.git/*
           */.git/**
           */node_modules/*
