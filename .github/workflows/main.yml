@@ -17,7 +17,7 @@ jobs:
         with:
           server: 151.243.222.70
           username: assetflow@arcueia.my.id
-          password: ${{ secrets.FTP_PASSWORD }}
+          password: TokisakiKurumi
           # exclude accepts a multiline string. Using a block scalar avoids YAML alias parsing.
           exclude: |
             **/.git/**
