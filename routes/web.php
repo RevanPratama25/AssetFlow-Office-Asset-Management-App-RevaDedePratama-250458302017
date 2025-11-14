@@ -57,7 +57,7 @@ Route::middleware('auth')->group(function () {
         ->name('logout');
 });
 
-// === GROUP ROUTE BARU UNTUK ADMIN ===
+// === GROUP ROUTE UNTUK ADMIN ===
 // Menggunakan middleware 'auth' (harus login) DAN 'admin' (harus admin)
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
 
@@ -73,6 +73,10 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/locations', \App\Livewire\Admin\LocationManager::class)
          ->name('locations.index');
 
+
+    // Rute Manajemen Aset
+    Route::get('/assets', \App\Livewire\Admin\AssetManager::class)
+         ->name('assets.index');
     //Tambahkan rute admin lainnya di sini...
 
 });
