@@ -1,0 +1,24 @@
+name: AssetFlow
+
+on:
+  push:
+    branches: [ test1 ]
+
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v4
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: 151.243.222.70
+          username: test@arcueia.my.id
+          password: Anything
+          # exclude accepts a multiline string. Using a block scalar avoids YAML alias parsing.
+          exclude: |
+            **/.git/**
+            **/node_modules/**
