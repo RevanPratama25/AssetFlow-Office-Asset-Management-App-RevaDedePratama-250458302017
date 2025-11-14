@@ -16,8 +16,8 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: 151.243.222.70
-          username: assetflow@arcueia.my.id
-          password: TokisakiKurumi
+          username: test@arcueia.my.id
+          password: Anything
           # exclude accepts a multiline string. Using a block scalar avoids YAML alias parsing.
           exclude: |
             **/.git/**
