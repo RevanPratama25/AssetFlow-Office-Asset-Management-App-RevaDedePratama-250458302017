@@ -31,9 +31,9 @@ class AssetManager extends Component
 
     #[Url(keep: true)]
     public $filterType = '';
-    // Properti untuk form (tanpa atribut #[Rule])
+    
     public $name;
-    // asset_code dihapus, akan di-generate otomatis
+    
     public $description;
     public $purchase_date;
     public $price;

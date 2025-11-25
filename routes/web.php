@@ -1,14 +1,22 @@
 <?php
 
-use App\Http\Controllers\Auth\EmailVerificationController;
-use App\Http\Controllers\Auth\LogoutController;
 use App\Livewire\Auth\Login;
-use App\Livewire\Auth\Passwords\Confirm;
+use App\Livewire\Auth\Verify;
+use App\Livewire\Auth\Register;
+use App\Livewire\Staff\MyAssets;
+use App\Livewire\Admin\Dashboard;
+use App\Livewire\Admin\Maintenance;
+use App\Livewire\Staff\AssetCatalog;
+use App\Livewire\Staff\ReportDamage;
+use App\Livewire\Admin\ReturnManager;
+use Illuminate\Support\Facades\Route;
 use App\Livewire\Auth\Passwords\Email;
 use App\Livewire\Auth\Passwords\Reset;
-use App\Livewire\Auth\Register;
-use App\Livewire\Auth\Verify;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Livewire\Admin\BorrowingManager;
+use App\Livewire\Auth\Passwords\Confirm;
+use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Auth\EmailVerificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +30,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Route::view('/', 'welcome')->name('home');
+Route::middleware(['auth'])->group(function () {
+    // Ini route utama setelah login
+    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+});
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -60,10 +72,10 @@ Route::middleware('auth')->group(function () {
 // === GROUP ROUTE UNTUK ADMIN ===
 // Menggunakan middleware 'auth' (harus login) DAN 'admin' (harus admin)
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
-
-    // Rute Dashboard Admin (contoh: /admin/dashboard)
-    Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])
-         ->name('dashboard');
+    
+    // Rute Livewire Dashboard yang SEBENARNYA (yang punya statistik)
+    // Kita beri nama 'overview' atau tetap 'dashboard' tapi di dalam prefix admin
+    Route::get('/overview', Dashboard::class)->name('overview');
 
     // Rute Manajemen Kategori
     Route::get('/categories', \App\Livewire\Admin\CategoryManager::class)
@@ -73,10 +85,49 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/locations', \App\Livewire\Admin\LocationManager::class)
          ->name('locations.index');
 
-
     // Rute Manajemen Aset
     Route::get('/assets', \App\Livewire\Admin\AssetManager::class)
          ->name('assets.index');
-    //Tambahkan rute admin lainnya di sini...
 
+    // Rute Manajemen Pengguna
+    Route::get('/users', \App\Livewire\Admin\UserManager::class)
+        ->name('users.index');
+
+    // Rute Verifikasi Peminjaman
+    Route::get('/borrowings', BorrowingManager::class)
+        ->name('admin.borrowings');
+
+    // Rute Verifikasi Pengembalian
+    Route::get('/returns', ReturnManager::class)
+        ->name('admin.returns');
+
+    // Rute Manajemen Maintenance
+    Route::get('/maintenance', Maintenance::class)
+        ->name('admin.maintenance');
+
+    // Laporan PDF Peminjaman Aset
+    Route::get('/reports/borrowing', \App\Livewire\Admin\Reports\BorrowingReport::class)->name('reports.borrowing');
+    //Tambahkan rute admin lainnya di sini..
+
+});
+
+// === GROUP ROUTE UNTUK STAF ===
+// Menggunakan middleware 'auth' (harus login) DAN 'staff' (harus staf)
+Route::middleware(['auth'])->group(function () {
+
+    // Rute Dashboard Staff
+    Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])
+        ->name('staff.dashboard');
+
+    // Katalog Aset
+    Route::get('/staff/assets', AssetCatalog::class)
+        ->name('staff.assets');
+
+    // Aset Staff
+    Route::get('/staff/my-assets', MyAssets::class)
+        ->name('staff.my-assets');
+
+    // Lapor Kerusakan Aset
+    Route::get('/staff/report-damage', ReportDamage::class)
+        ->name('staff.report_damage');
 });

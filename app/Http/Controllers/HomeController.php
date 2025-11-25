@@ -26,19 +26,19 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        // 1. Dapatkan role user yang sedang login
-        $role = Auth::user()->role;
+{
+    // 1. Dapatkan role user
+    $role = Auth::user()->role;
 
-        // 2. Logika percabangan (Role-Based Routing)
-        if ($role === 'admin') {
-            // 3. Jika rolenya 'admin', tampilkan view admin
-            // (resources/views/admin/dashboard.blade.php)
-            return view('admin.dashboard');
-        } else {
-            // 4. Jika rolenya 'staf' (atau lainnya), tampilkan view staf
-            // (resources/views/staf/dashboard.blade.php)
-            return view('staff.dashboard');
-        }
+    // 2. Logika percabangan
+    if ($role === 'admin') {
+        // [PERUBAHAN DI SINI]
+        // Jangan return view, tapi redirect ke Route Livewire Admin
+        // Ini akan memicu logic di file Livewire/Admin/Dashboard.php
+        return redirect()->route('admin.overview'); 
+    } else {
+        // Jika Staf, tetap tampilkan view staf biasa
+        return view('staff.dashboard');
     }
+}
 }

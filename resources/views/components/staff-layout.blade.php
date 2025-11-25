@@ -96,7 +96,7 @@
                                                 </svg>
                                                 {{ __('Dashboard') }}
                                             </a>
-                                            <a href="#"
+                                            <a href="{{ route('staff.assets') }}"
                                                class="flex items-center px-4 py-2 text-sm {{ request()->routeIs('staf.catalog') ? 'bg-gray-100 text-gray-900 dark:bg-gray-700 dark:text-white' : 'text-gray-700 dark:text-gray-300' }} hover:bg-gray-100 dark:hover:bg-gray-700"
                                                role="menuitem">
                                                 <svg class="w-5 h-5 mr-2.5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -104,7 +104,7 @@
                                                 </svg>
                                                 {{ __('Katalog Aset') }}
                                             </a>
-                                            <a href="#"
+                                            <a href="{{ route('staff.my-assets')}}"
                                                class="flex items-center px-4 py-2 text-sm {{ request()->routeIs('staf.my_assets') ? 'bg-gray-100 text-gray-900 dark:bg-gray-700 dark:text-white' : 'text-gray-700 dark:text-gray-300' }} hover:bg-gray-100 dark:hover:bg-gray-700"
                                                role="menuitem">
                                                 <svg class="w-5 h-5 mr-2.5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -112,7 +112,7 @@
                                                 </svg>
                                                 {{ __('Aset Saya') }}
                                             </a>
-                                            <a href="#"
+                                            <a href="{{ route('staff.report_damage')}}"
                                                class="flex items-center px-4 py-2 text-sm {{ request()->routeIs('staf.report_damage') ? 'bg-gray-100 text-gray-900 dark:bg-gray-700 dark:text-white' : 'text-gray-700 dark:text-gray-300' }} hover:bg-gray-100 dark:hover:bg-gray-700"
                                                role="menuitem">
                                                 <svg class="w-5 h-5 mr-2.5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -218,19 +218,19 @@
                                     </svg>
                                     {{ __('Dashboard') }}
                                 </a>
-                                <a href="#" class="flex items-center px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('staf.catalog') ? 'bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-white' : 'text-gray-500 dark:text-gray-400' }} hover:text-gray-800 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+                                <a href="{{ route('staff.assets') }}" class="flex items-center px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('staf.catalog') ? 'bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-white' : 'text-gray-500 dark:text-gray-400' }} hover:text-gray-800 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition">
                                     <svg class="w-5 h-5 mr-3 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                       <path d="M3.5 3.75a.25.25 0 01.25-.25h12.5a.25.25 0 01.25.25v12.5a.25.25 0 01-.25.25H3.75a.25.25 0 01-.25-.25V3.75zM5 5v10h10V5H5zM6.25 6.25a.75.75 0 000 1.5h7.5a.75.75 0 000-1.5h-7.5zM6.25 9.25a.75.75 0 000 1.5h7.5a.75.75 0 000-1.5h-7.5zM6.25 12.25a.75.75 0 000 1.5h4.5a.75.75 0 000-1.5h-4.5z" />
                                     </svg>
                                     {{ __('Katalog Aset') }}
                                 </a>
-                                <a href="#" class="flex items-center px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('staf.my_assets') ? 'bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-white' : 'text-gray-500 dark:text-gray-400' }} hover:text-gray-800 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+                                <a href="{{ route('staff.my-assets') }}" class="flex items-center px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('staf.my_assets') ? 'bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-white' : 'text-gray-500 dark:text-gray-400' }} hover:text-gray-800 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition">
                                     <svg class="w-5 h-5 mr-3 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                       <path d="M2.913 2.913a.75.75 0 011.06 0L8 6.94l4.028-4.027a.75.75 0 011.06 0l4.028 4.027v-1.1a.75.75 0 011.5 0v3.379a.75.75 0 01-.22.53l-4.25 4.25a.75.75 0 01-1.06 0L10 9.719l-4.25 4.25a.75.75 0 01-1.06 0l-4.25-4.25a.75.75 0 01-.22-.53V5.81a.75.75 0 011.5 0v1.1L2.913 2.913zM6.94 8l-4.028 4.028v1.1a.75.75 0 00.22.53l4.25 4.25a.75.75 0 001.06 0L10 16.281l4.25 4.25a.75.75 0 001.06 0l4.25-4.25a.75.75 0 00.22-.53v-1.1L13.06 8l4.028-4.028a.75.75 0 00-1.06-1.06L12 6.94 7.972 2.913a.75.75 0 00-1.06 0L2.913 6.94l4.027 4.028z" />
                                     </svg>
                                     {{ __('Aset Saya') }}
                                 </a>
-                                <a href="#" class="flex items-center px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('staf.report_damage') ? 'bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-white' : 'text-gray-500 dark:text-gray-400' }} hover:text-gray-800 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+                                <a href="{{ route('staff.report_damage') }}" class="flex items-center px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('staf.report_damage') ? 'bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-white' : 'text-gray-500 dark:text-gray-400' }} hover:text-gray-800 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition">
                                     <svg class="w-5 h-5 mr-3 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                       <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
                                     </svg>

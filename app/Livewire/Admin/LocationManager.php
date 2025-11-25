@@ -30,11 +30,11 @@ class LocationManager extends Component // <-- Diubah
     public function render()
     {
         // Ambil data lokasi dengan pagination
-        $locations = Location::latest()->paginate(10); // <-- Diubah
+        $locations = Location::latest()->paginate(10); 
         
         // Kirim data ke view
-        return view('livewire.admin.location-manager', [ // <-- Diubah
-            'locations' => $locations // <-- Diubah
+        return view('livewire.admin.location-manager', [ 
+            'locations' => $locations 
         ]);
     }
 
