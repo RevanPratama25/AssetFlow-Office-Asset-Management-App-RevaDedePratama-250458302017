@@ -13,6 +13,9 @@ class LogoutController extends Controller
     {
         Auth::logout();
 
-        return redirect(route('home'));
+        session()->invalidate();
+        session()->regenerateToken();
+
+        return redirect('/');
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Category;
 
@@ -10,14 +11,21 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         $categories = [
-            ['name' => 'Elektronik (Laptop/PC)', 'description' => 'Perangkat komputer untuk staf'],
-            ['name' => 'Kendaraan', 'description' => 'Kendaraan operasional kantor'],
-            ['name' => 'Peralatan Presentasi', 'description' => 'Proyektor, Layar, dll'],
-            ['name' => 'Furniture', 'description' => 'Meja, Kursi, Lemari'],
+            'Elektronik & Gadget',
+            'Furniture Kantor',
+            'Kendaraan Dinas',
+            'Alat Tulis & Dokumen',
+            'Peralatan Kebersihan',
+            'Perangkat Jaringan (Network)',
+            'Audio Visual',
+            'Aksesoris Komputer',
         ];
 
         foreach ($categories as $cat) {
-            Category::create($cat);
+            Category::create([
+                'name' => $cat,
+                'description' => 'Kategori untuk ' . $cat,
+            ]);
         }
     }
 }

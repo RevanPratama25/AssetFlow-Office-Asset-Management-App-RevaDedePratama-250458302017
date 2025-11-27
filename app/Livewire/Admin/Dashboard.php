@@ -2,15 +2,35 @@
 
 namespace App\Livewire\Admin;
 
-use Livewire\Component;
 use App\Models\Asset;
+use Livewire\Component;
+use App\Models\Category;
 use App\Models\BorrowingRequest;
 use App\Models\MaintenanceLog; // Jika ingin hitung log maintenance aktif
+use Illuminate\Support\Facades\DB;
 
 class Dashboard extends Component
 {
     public function render()
     {
+        // --- DATA UNTUK GRAFIK 1: Status Aset (Pie Chart) ---
+        // Hasilnya: Collection [{'status': 'Tersedia', 'total': 10}, {'status': 'Rusak', 'total': 2}, ...]
+        $assetsByStatus = Asset::select('status', DB::raw('count(*) as total'))
+            ->groupBy('status')
+            ->get();
+        
+        // Kita format agar mudah dibaca Chart.js (Pisahkan Label dan Data)
+        $chartStatusLabels = $assetsByStatus->pluck('status');
+        $chartStatusValues = $assetsByStatus->pluck('total');
+
+
+        // --- DATA UNTUK GRAFIK 2: Aset per Kategori (Bar Chart) ---
+        // Kita ambil kategori beserta jumlah asetnya
+        $assetsByCategory = Category::withCount('assets')->get();
+        
+        $chartCategoryLabels = $assetsByCategory->pluck('name');
+        $chartCategoryValues = $assetsByCategory->pluck('assets_count');
+
         // 1. Statistik Aset
         $totalAssets = Asset::count();
         $availableAssets = Asset::where('status', 'Tersedia')->count();
@@ -36,7 +56,12 @@ class Dashboard extends Component
             'maintenanceAssets' => $maintenanceAssets,
             'pendingRequests' => $pendingRequests,
             'activeLoans' => $activeLoans,
-            'recentActivities' => $recentActivities
+            'recentActivities' => $recentActivities,
+            // ... variabel untuk grafik ...
+            'chartStatusLabels' => $chartStatusLabels,
+            'chartStatusValues' => $chartStatusValues,
+            'chartCategoryLabels' => $chartCategoryLabels,
+            'chartCategoryValues' => $chartCategoryValues,
         ])->extends('components.admin-layout');
     }
 }

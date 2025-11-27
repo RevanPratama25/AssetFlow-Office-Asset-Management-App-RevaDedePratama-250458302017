@@ -10,15 +10,21 @@ class LocationSeeder extends Seeder
     public function run(): void
     {
         $locations = [
-            ['name' => 'Gudang Utama', 'description' => 'Penyimpanan aset baru atau cadangan'],
-            ['name' => 'Ruang Server', 'description' => 'Lokasi perangkat jaringan'],
-            ['name' => 'Lobby Kantor', 'description' => 'Area resepsionis'],
-            ['name' => 'Ruang Meeting A', 'description' => 'Lantai 1'],
-            ['name' => 'Garasi', 'description' => 'Area parkir kendaraan operasional'],
+            'Gudang Utama',
+            'Ruang Server',
+            'Lobby Depan',
+            'Ruang Meeting Lt. 1',
+            'Ruang Meeting Lt. 2',
+            'Pantry',
+            'Ruang Staff IT',
+            'Ruang HRD',
+            'Parkiran Basement',
         ];
 
         foreach ($locations as $loc) {
-            Location::create($loc);
+            Location::create([
+                'name' => $loc,
+            ]);
         }
     }
 }

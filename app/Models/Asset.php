@@ -54,4 +54,18 @@ class Asset extends Model
     {
         return $this->belongsTo(User::class, 'current_user_id');
     }
+
+    /**
+     * Relasi ke tabel borrowingRequests & MaintenanceLogs
+     * Sebuah Aset 'punya banyak' Permintaan Peminjaman dan Log Pemeliharaan
+     */
+    public function borrowingRequests()
+    {
+        return $this->hasMany(BorrowingRequest::class);
+    }
+
+    public function maintenanceLogs()
+    {
+        return $this->hasMany(MaintenanceLog::class);
+    }
 }

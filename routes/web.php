@@ -5,6 +5,7 @@ use App\Livewire\Auth\Verify;
 use App\Livewire\Auth\Register;
 use App\Livewire\Staff\MyAssets;
 use App\Livewire\Admin\Dashboard;
+use App\Livewire\Admin\AssetDetail;
 use App\Livewire\Admin\Maintenance;
 use App\Livewire\Staff\AssetCatalog;
 use App\Livewire\Staff\ReportDamage;
@@ -35,7 +36,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 });
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// 1. RUTE PUBLIK (Landing Page) - Tidak butuh login
+Route::view('/', 'welcome')->name('landing');
+
+// 2. RUTE DASHBOARD (Butuh Login)
+Route::middleware(['auth'])->group(function () {
+    // Arahkan /home atau /dashboard ke HomeController
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+});
 
 Route::middleware('guest')->group(function () {
     Route::get('login', Login::class)
@@ -106,7 +115,12 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
         ->name('admin.maintenance');
 
     // Laporan PDF Peminjaman Aset
-    Route::get('/reports/borrowing', \App\Livewire\Admin\Reports\BorrowingReport::class)->name('reports.borrowing');
+    Route::get('/reports/borrowing', \App\Livewire\Admin\Reports\BorrowingReport::class)
+        ->name('reports.borrowing');
+    
+    // Rute Detail Aset
+    Route::get('/assets/{id}', AssetDetail::class)
+        ->name('admin.assets.detail');
     //Tambahkan rute admin lainnya di sini..
 
 });
