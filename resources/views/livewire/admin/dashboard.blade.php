@@ -151,7 +151,7 @@
             @else
                 <div class="bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-700 rounded-xl p-5 mb-6">
                     <div class="flex items-center gap-4">
-                        <div class="flex-shrink-0 p-2 bg-emerald-100 dark:bg-emerald-800/50 rounded-lg text-emerald-600 dark:text-emerald-400">
+                        <div class="shrink-0 p-2 bg-emerald-100 dark:bg-emerald-800/50 rounded-lg text-emerald-600 dark:text-emerald-400">
                             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
@@ -232,7 +232,7 @@
                     data: @json($chartCategoryValues),
                     backgroundColor: '#6366F1', // Indigo primary
                     borderRadius: 6,
-                    barThickness: 50,
+                    barThickness: 30,
                 }]
             },
             options: {

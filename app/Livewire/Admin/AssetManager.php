@@ -163,7 +163,6 @@ class AssetManager extends Component
         $asset = Asset::findOrFail($id);
         $this->assetId = $id;
         $this->name = $asset->name;
-        // $this->asset_code tidak perlu di-edit
         $this->description = $asset->description;
         $this->purchase_date = $asset->purchase_date;
         $this->price = $asset->price; // Harga dikirim sebagai angka

@@ -5,7 +5,7 @@
         {{-- Sapaan Selamat Datang --}}
         <div class="mb-8">
             <h2 class="text-3xl font-bold text-slate-800 dark:text-white tracking-tight">
-                Halo, {{ Auth::user()->name }}! 👋
+                Halo, {{ Auth::user()->name }}! 
             </h2>
             <p class="text-slate-500 dark:text-slate-400 mt-2 text-base">
                 Selamat datang kembali di AssetFlow. Berikut adalah ringkasan aktivitas aset Anda.
@@ -19,7 +19,7 @@
             <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm p-6 border-t-4 border-blue-500 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Sedang Dipinjam</p>
+                        <p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Sedang Dipakai</p>
                         <p class="text-3xl font-bold text-slate-800 dark:text-white mt-2">{{ $activeLoans }}</p>
                     </div>
                     <div class="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-xl text-blue-600 dark:text-blue-400">
@@ -123,7 +123,7 @@
                             plugins: {
                                 legend: { position: 'bottom', labels: { padding: 20, usePointStyle: true } }
                             },
-                            cutout: '70%',
+                            cutout: '50%',
                         }
                     });
                 } else {
