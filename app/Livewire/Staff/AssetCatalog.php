@@ -82,7 +82,7 @@ class AssetCatalog extends Component
             $query->where('name', 'like', '%' . $this->search . '%');
         }
 
-        // Filter Kategori (Opsional, jika ingin menambahkan dropdown kategori)
+        // Filter Kategori 
         if ($this->category_id) {
             $query->where('category_id', $this->category_id);
         }
