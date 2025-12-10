@@ -107,9 +107,9 @@
                                 label: 'Jumlah',
                                 data: @json($chartStatusValues),
                                 backgroundColor: [
-                                    '#F59E0B', // Dipakai Amber (F59E0B) 10B981
-                                    '#3B82F6', // Tersedia Blue (3B82F6)
-                                    '#10B981', // Rusak Emerald (10B981) EF4444
+                                    '#10B981', // Dipakai Blue (3B82F6) 
+                                    '#3B82F6', // Tersedia Amber (10B981)10B981
+                                    '#F59E0B', // Rusak Emerald () EF4444
                                     '#EF4444', // Maintenance Rose (EF4444) F59E0B
                                     '#64748B'  // Slate (64748B)
                                 ],
