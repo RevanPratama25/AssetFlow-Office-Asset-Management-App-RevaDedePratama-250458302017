@@ -49,8 +49,8 @@
             
             {{-- Logo --}}
             <a href="#" class="flex items-center gap-2 group">
-                <div class="relative w-8 h-8 flex items-center justify-center bg-linear-to-br from-blue-600 to-indigo-600 rounded-lg text-white font-bold shadow-lg shadow-blue-500/30 transition-transform group-hover:scale-110">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                <div class="relative w-8 h-8 flex items-center justify-center bg-slate-900/80 rounded-lg text-white font-bold  transition-transform group-hover:scale-110">
+                    <x-logo class="w-auto h-10 pb-0 mx-auto mb-0 text-indigo-450" />
                 </div>
                 <span class="text-xl font-bold tracking-tight text-slate-800 dark:text-white">AssetFlow</span>
             </a>
@@ -195,12 +195,12 @@
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
             {{-- Footer Brand & Logo --}}
             <div class="flex items-center gap-2">
-                <div class="w-6 h-6 bg-slate-900 dark:bg-white rounded flex items-center justify-center text-white dark:text-slate-900 text-xs font-bold">A</div> 
+                <x-logo class="w-auto h-10 pb-0 mx-auto mb-0 text-indigo-450" />
                 <span class="font-bold text-slate-800 dark:text-white">AssetFlow</span>
             </div>
             
             <p class="text-slate-500 dark:text-slate-400 text-sm">
-                &copy; {{ date('Y') }} AssetFlow. Dibuat untuk Efisiensi Kerja.
+                &copy; {{ date('Y') }} AssetFlow Management.
             </p>
             
             <div class="flex gap-6 text-sm text-slate-500 dark:text-slate-400 font-medium">
