@@ -31,7 +31,7 @@
                     {{-- KIRI: Logo & Desktop Menu --}}
                     <div class="flex items-center">
                         {{-- Logo --}}
-                        <a href="{{ route('home') }}" class="shrink-0 flex items-center gap-2 group">
+                        <a href="{{ route('home') }}" class="shrink-0 flex items-center gap-3 group">
                             <a href="{{ route('home') }}" class="flex items-center gap-3 group">
                                 <a href="{{ route('home') }}">
                                     <x-logo class="w-auto h-10 pb-0 mx-auto mb-0 text-indigo-600" />
