@@ -6,7 +6,7 @@ use App\Models\Asset;
 use Livewire\Component;
 use App\Models\Category;
 use App\Models\BorrowingRequest;
-use App\Models\MaintenanceLog; // Jika ingin hitung log maintenance aktif
+use App\Models\MaintenanceLog; // Jika Log maintenance aktif
 use Illuminate\Support\Facades\DB;
 
 class Dashboard extends Component
@@ -19,13 +19,13 @@ class Dashboard extends Component
             ->groupBy('status')
             ->get();
         
-        // Kita format agar mudah dibaca Chart.js (Pisahkan Label dan Data)
+        // Format agar mudah dibaca Chart.js (Pisahkan Label dan Data)
         $chartStatusLabels = $assetsByStatus->pluck('status');
         $chartStatusValues = $assetsByStatus->pluck('total');
 
 
         // --- DATA UNTUK GRAFIK 2: Aset per Kategori (Bar Chart) ---
-        // Kita ambil kategori beserta jumlah asetnya
+        // Ambil kategori beserta jumlah asetnya
         $assetsByCategory = Category::withCount('assets')->get();
         
         $chartCategoryLabels = $assetsByCategory->pluck('name');
